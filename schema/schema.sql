@@ -9,7 +9,8 @@ CREATE TABLE IF NOT EXISTS shorteners (
 );
 
 CREATE TABLE IF NOT EXISTS shortener_logs (
-    shortener_id uuid PRIMARY KEY,
+    shortener_id uuid NOT NULL,
+    old_url varchar(256) NOT NULL,
     new_url varchar(256) NOT NULL,
     created_at timestamptz DEFAULT NOW()
 );
