@@ -3,6 +3,7 @@ package database
 import (
 	"context"
 	"fmt"
+	"log"
 	"url-shortener/env"
 
 	"github.com/jackc/pgx/v5/pgxpool"
@@ -17,6 +18,8 @@ func New(ctx context.Context) error {
 		env.GetEnv("DB_HOST", "localhost:5432"),
 		env.GetEnv("DB_NAME", "link_shortener"),
 	)
+
+	log.Println(dsn)
 
 	conn, err := pgxpool.New(ctx, dsn)
 	if err != nil {
